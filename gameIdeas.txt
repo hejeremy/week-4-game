@@ -1,0 +1,24 @@
+
+Title: Polar Bear Cafe
+
+Instructions:
+1. Interact with characters around Polar Bear Cafe.
+2. Gain popularity points by giving positive responses to conversation.
+3. Order stuff off the menu
+
+Background Locations:
+Cafe
+Bar
+Table/Booth
+Outdoor Patio
+Cafe Entrance
+
+Main Characters:
+Shirokuma
+Panda
+Penguin
+
+Guest Characters:
+Dio (JoJo)
+Tohru (Maid Dragon)
+Kobayashi (Maid Dragon)
