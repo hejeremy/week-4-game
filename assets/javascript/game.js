@@ -33,7 +33,7 @@ var polarBear = {
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 3) {
             return ("Welcome!");
-        } else if (this.affection_lvl >= 3 && this.affection_lvl < 10) {
+        } else if (this.affection_lvl >= 3 && this.affection_lvl < 6) {
             return ("It's good to see you again!");
         } else {
             return ("Hello friend! Would you like the usual?");
@@ -51,7 +51,7 @@ var panda = {
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 3) {
             return ("I wonder when my food will arrive?");
-        } else if (this.affection_lvl >= 3 && this.affection_lvl < 10) {
+        } else if (this.affection_lvl >= 3 && this.affection_lvl < 6) {
             return ("Oh hey, didn't see you there.");
         } else {
             return ("Hey hey! Listen to this!");
@@ -69,7 +69,7 @@ var penguin = {
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 3) {
             return ("Hey again.");
-        } else if (this.affection_lvl >= 3 && this.affection_lvl < 10) {
+        } else if (this.affection_lvl >= 3 && this.affection_lvl < 6) {
             return ("Will I ever pass the driving exam?");
         } else {
             return ("I got my license!");
@@ -176,25 +176,38 @@ function generateAllStats() {
 
 //Calls to start conversation
 var characterImage = $('#characterImage');
+var conversationWords = $('#conversationWords');
+
+function sentencePackage(input) {
+    var newParagraph = $('<p>');
+    newParagraph.text(input);
+    return newParagraph;
+}
 function callPolarBear() {
+    //alert(polarBear.startConversation());
     characterImage.css('background-image', 'url(./assets/images/polarBear1.jpg)');
-    alert(polarBear.startConversation());
+    var sentence = (polarBear.startConversation());
+    conversationWords.html(sentencePackage(sentence));
 
     polarBear.affection_lvl++;
     talking = false;
 }
 
 function callPanda() {
-    alert(panda.startConversation());
+    //alert(panda.startConversation());
     characterImage.css('background-image', 'url(./assets/images/panda1.jpg)');
+    var sentence = (panda.startConversation());
+    conversationWords.html(sentencePackage(sentence));
 
     panda.affection_lvl++;
     talking = false;
 }
 
 function callPenguin() {
-    alert(penguin.startConversation());
+    //alert(penguin.startConversation());
     characterImage.css('background-image', 'url(./assets/images/penguin1.jpg)');
+    var sentence = (penguin.startConversation());
+    conversationWords.html(sentencePackage(sentence));
 
     penguin.affection_lvl++;
     talking = false;

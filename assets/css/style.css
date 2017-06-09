@@ -23,3 +23,29 @@ body {
     width: auto;
     background-repeat: no-repeat;
 }
+
+/*
+#conversationWords {
+    -webkit-animation: mymove 5s infinite;
+    -moz-animation: mymove 5s infinite;
+    -o-animation: mymove 5s infinite;
+    animation: mymove 5s infinite;
+}
+
+@-webkit-animation: mymove {
+    from {visibility: visible};
+    to {visibility: hidden};
+}
+@-moz-animation: mymove {
+    from {visibility: visible};
+    to {visibility: hidden};
+}
+@-o-animation: mymove {
+    from {visibility: visible};
+    to {visibility: hidden};
+}
+@-animation: mymove {
+    from {visibility: visible};
+    to {visibility: hidden};
+}
+*/
