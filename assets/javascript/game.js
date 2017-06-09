@@ -172,9 +172,12 @@ function generateAllStats() {
     generateCharacterStats(panda);
     generateCharacterStats(penguin);
 }
-//------------> INCOMPLETE SEGMENT END
 
+
+//Calls to start conversation
+var characterImage = $('#characterImage');
 function callPolarBear() {
+    characterImage.css('background-image', 'url(./assets/images/polarBear1.jpg)');
     alert(polarBear.startConversation());
 
     polarBear.affection_lvl++;
@@ -183,6 +186,7 @@ function callPolarBear() {
 
 function callPanda() {
     alert(panda.startConversation());
+    characterImage.css('background-image', 'url(./assets/images/panda1.jpg)');
 
     panda.affection_lvl++;
     talking = false;
@@ -190,6 +194,7 @@ function callPanda() {
 
 function callPenguin() {
     alert(penguin.startConversation());
+    characterImage.css('background-image', 'url(./assets/images/penguin1.jpg)');
 
     penguin.affection_lvl++;
     talking = false;

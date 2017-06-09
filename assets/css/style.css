@@ -17,3 +17,9 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+
+#characterImage {
+    height: 300px;
+    width: auto;
+    background-repeat: no-repeat;
+}
