@@ -11,26 +11,37 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
-        <nav class='navbar navbar-default' id='navBar'>
+        <!--
+            <nav class='navbar navbar-default' id='navBar'>
             <div class='container'>
-                <h2>Game</h2>
+            <h2>Game</h2>
             </div>
-        </nav>
+            </nav>
+        -->
         <div class='container' id='mainContainer'>
-            <div class='row' id='backgrounds'>
+            <div class='row'>
+                <br>
             </div>
-            <br/>
-            <div class='row' id='characters'>
+            <div class='row'>
+                <div class='col-sm-6'>
+                    <div class='row' id='backgrounds'>
+                    </div>
+                    <br/>
+                    <div class='row' id='characters'>
+                    </div>
+                </div>
+                <div class='col-sm-6'>
+                    <div class='row' id='characterImage'>
+                        <div class='row' id='conversationOptions'>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <br/>
-            <div class='row' id='conversationOptions'>
-            </div>
-        </div>
-        <footer class='footer container' id='characterStats'>
-            <div class='row' id='characterStats'>
-            </div>
-        </footer>
-        <script src='assets/javascript/game.js'></script>
+            <footer class='footer container' id='characterStats'>
+                <div class='row' id='characterStats'>
+                </div>
+            </footer>
+            <script src='assets/javascript/game.js'></script>
     </body>
 </html>
 
