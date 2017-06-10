@@ -11,6 +11,9 @@ var characters = {
     patio: ['penguin'],
 };
 
+//Clears portrait
+$('#conversation').css('visibility', 'hidden');
+
 //Tracks your current location
 var currentLocation = 'cafe';
 setBackground(currentLocation);
@@ -31,14 +34,53 @@ var polarBear = {
     affection_lvl: 0,
     startConversation: function() {
         if (this.affection_lvl === 0) {
-            return (["Hi there! My name is Polar Bear, welcome to my cafe!"]);
+            return ["Hi there! My name is Polar Bear, welcome to my cafe!"];
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 3) {
-            return (["Welcome!"]);
+            return ["Welcome!"];
         } else if (this.affection_lvl >= 3 && this.affection_lvl < 6) {
-            return (["It's good to see you again!"]);
+            return ["It's good to see you again!"];
         } else {
-            return (["Hello friend! Would you like the usual?", "I got something nice.", "Just in today!"]);
+            return ["Hello friend!",
+                "Would you like the usual?",
+                "I got something nice.",
+                "It's fresh and just in today!"];
+        }
+    },
+    initialConversation1: function() {
+        var speech = ['Would you like to order something?.'];
+        initiateConversation(speech);
+        return 'pb1';
+    },
+    responseConversation1: function(input) {
+        switch (input) {
+            case '0':
+                return ["I see.", "I'll leave you to it then."];
+                break;
+            case '1':
+                return ["Coming right up!"];
+                break;
+            default:
+                return ['...'];
+                break;
+        }
+    },
+    initialConversation2: function() {
+        var speech = ['The weather today sure is nice.', 'I hope you are well.'];
+        initiateConversation(speech);
+        return 'pb2';
+    },
+    responseConversation2: function(input) {
+        switch (input) {
+            case '0':
+                return ["Good to hear!", "Today is great day after all."];
+                break;
+            case '1':
+                return ["Oh dear.", "I hope you feel better."];
+                break;
+            default:
+                return ['...'];
+                break;
         }
     }
 };
@@ -52,11 +94,13 @@ var panda = {
             return (["Hey! I'm Panda! I'm a regular here. Aren't I cute?"]);
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 3) {
-            return (["I wonder when my food will arrive?"]);
+            return ["I wonder when my food will arrive?"];
         } else if (this.affection_lvl >= 3 && this.affection_lvl < 6) {
-            return (["Oh hey, didn't see you there."]);
+            return ["Oh hey, didn't see you there."];
         } else {
-            return (["Hey hey! Listen to this!"]);
+            return ["Hey hey! Listen to this!",
+                    "Today at the zoo, some elementary school students came on a field trip.",
+                    "I gave them lots of service!"];
         }
     }
 };
@@ -74,7 +118,8 @@ var penguin = {
         } else if (this.affection_lvl >= 3 && this.affection_lvl < 6) {
             return (["Will I ever pass the driving exam?"]);
         } else {
-            return (["I got my license!"]);
+            return (["I got my license!",
+                    "I'm going to ask Ms. Penko out for a drive!"]);
         }
     }
 };
@@ -198,8 +243,8 @@ function panelPackage(input) {
 function callPolarBear() {
     talkingTo = 'polarBear';
     characterImage.css('background-image', 'url(./assets/images/polarBear1.jpg)');
-    loadConversation(polarBear.startConversation());
-    var sentence = createConversation(conversationHolder);
+    $('#conversation').css('visibility', 'visible');
+    initiateConversation(polarBear.startConversation());
 
     polarBear.affection_lvl++;
     talking = false;
@@ -208,8 +253,8 @@ function callPolarBear() {
 function callPanda() {
     talkingTo = 'panda';
     characterImage.css('background-image', 'url(./assets/images/panda1.jpg)');
-    loadConversation(panda.startConversation());
-    var sentence = createConversation(conversationHolder);
+    $('#conversation').css('visibility', 'visible');
+    initiateConversation(panda.startConversation());
 
     panda.affection_lvl++;
     talking = false;
@@ -218,15 +263,15 @@ function callPanda() {
 function callPenguin() {
     talkingTo = 'penguin';
     characterImage.css('background-image', 'url(./assets/images/penguin1.jpg)');
-    loadConversation(penguin.startConversation());
-    var sentence = createConversation(conversationHolder);
+    $('#conversation').css('visibility', 'visible');
+    initiateConversation(penguin.startConversation());
 
     penguin.affection_lvl++;
     talking = false;
 }
 
 function playAudio(inputValue) {
-    console.log(inputValue);
+    //console.log(inputValue);
     switch(inputValue) {
         case 'cafe':
         case 'patio':
@@ -254,7 +299,7 @@ function loadConversation(inputArray) {
     conversationHolder.dialogue = inputArray;
     conversationHolder.dialogueLength = inputArray.length;
     conversationHolder.dialoguePlace = 0;
-    console.log(conversationHolder);
+    //console.log(conversationHolder);
 }
 
 function createConversation(conversationHolder) {
@@ -266,8 +311,8 @@ function createConversation(conversationHolder) {
 function handleConversation() {
     var conversation = conversationHolder.dialogue[conversationHolder.dialoguePlace];
     conversationHolder.dialoguePlace++;
-    console.log(conversationHolder.dialoguePlace);
-    console.log(conversation);
+    //console.log(conversationHolder.dialoguePlace);
+    //console.log(conversation);
     conversationWords.html(panelPackage(sentencePackage(conversation)));
     return conversation;
 }
@@ -291,6 +336,7 @@ function setNextButton() {
             $('#nextButton').empty();
             $('#conversationWords').empty();
             characterImage.css('background-image', 'none');
+            $('#conversation').css('visibility', 'hidden');
             checkTalkingTo();
         } else {
             handleConversation();
@@ -348,3 +394,9 @@ function resetCharacterButtons() {
         generateAllStats();
     });
 }
+
+function initiateConversation(input) {
+    loadConversation(input);
+    createConversation(conversationHolder);
+}
+
