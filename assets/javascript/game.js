@@ -15,6 +15,7 @@ var characters = {
 var currentLocation = 'cafe';
 setBackground(currentLocation);
 generateOptions(characters[currentLocation], $('#characters'), 'characterOptions');
+playAudio(currentLocation);
 
 //Call this to reattach onclick to the button classes
 resetCharacterButtons();
@@ -213,37 +214,59 @@ function callPenguin() {
     talking = false;
 }
 
-//Choses background from assets/images
-var backgroundOptions = $('.backgroundOptions');
-backgroundOptions.on('click', function() {
-    //console.log($(this).data('value'));
-    if(currentLocation === $(this).data('value')) {
-        return;
+function playAudio(inputValue) {
+    console.log(inputValue);
+    switch(inputValue) {
+        case 'cafe':
+        case 'patio':
+            //console.log($('#audio1'));
+            $('#audio2')[0].pause();
+            $('#audio2')[0].currentTime = 0;
+            $('#audio1')[0].play();
+            break;
+        case 'bar':
+        case 'table':
+            //console.log($('#audio2'));
+            $('#audio1')[0].pause();
+            $('#audio1')[0].currentTime = 0;
+            $('#audio2')[0].play();
+        default:
+            break;
     }
-    currentLocation = $(this).data('value');
-    //console.log(currentLocation);
-    setBackground(currentLocation);
-    generateOptions(characters[currentLocation], $('#characters'), 'characterOptions');
-    resetCharacterButtons();
-});
-
-//This needs to be called each time options are generated because .empty removes it
-function resetCharacterButtons() {
-    //console.log(backgroundOptions);
-
-    var characterOptions = $('.characterOptions');
-    characterOptions.on('click', function() {
-        //console.log('Before talk check');
-        if (talking) {
-            return;
-        } else {
-            talking = true;
-        }
-        //console.log('After talk check');
-        var currentCharacter = $(this).data('value');
-        enterConversation(currentCharacter);
-        talking = false;
-        clearStats();
-        generateAllStats();
-    });
 }
+
+    //Choses background from assets/images
+    var backgroundOptions = $('.backgroundOptions');
+    backgroundOptions.on('click', function() {
+        //console.log($(this).data('value'));
+        if(currentLocation === $(this).data('value')) {
+            return;
+        }
+        currentLocation = $(this).data('value');
+        playAudio(currentLocation);
+        //console.log(currentLocation);
+        setBackground(currentLocation);
+        generateOptions(characters[currentLocation], $('#characters'), 'characterOptions');
+        resetCharacterButtons();
+    });
+
+    //This needs to be called each time options are generated because .empty removes it
+    function resetCharacterButtons() {
+        //console.log(backgroundOptions);
+
+        var characterOptions = $('.characterOptions');
+        characterOptions.on('click', function() {
+            //console.log('Before talk check');
+            if (talking) {
+                return;
+            } else {
+                talking = true;
+            }
+            //console.log('After talk check');
+            var currentCharacter = $(this).data('value');
+            enterConversation(currentCharacter);
+            talking = false;
+            clearStats();
+            generateAllStats();
+        });
+    }
