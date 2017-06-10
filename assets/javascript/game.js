@@ -22,6 +22,7 @@ resetCharacterButtons();
 
 //Tracks if you're in a conversation
 var talking = false;
+var talkingTo = '';
 
 //Character info and stats
 var polarBear = {
@@ -30,14 +31,14 @@ var polarBear = {
     affection_lvl: 0,
     startConversation: function() {
         if (this.affection_lvl === 0) {
-            return ("Hi there! My name is Polar Bear, welcome to my cafe!");
+            return (["Hi there! My name is Polar Bear, welcome to my cafe!"]);
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 3) {
-            return ("Welcome!");
+            return (["Welcome!"]);
         } else if (this.affection_lvl >= 3 && this.affection_lvl < 6) {
-            return ("It's good to see you again!");
+            return (["It's good to see you again!"]);
         } else {
-            return ("Hello friend! Would you like the usual?");
+            return (["Hello friend! Would you like the usual?", "I got something nice.", "Just in today!"]);
         }
     }
 };
@@ -48,14 +49,14 @@ var panda = {
     affection_lvl: 0,
     startConversation: function() {
         if (this.affection_lvl === 0) {
-            return ("Hey! I'm Panda! I'm a regular here. Aren't I cute?");
+            return (["Hey! I'm Panda! I'm a regular here. Aren't I cute?"]);
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 3) {
-            return ("I wonder when my food will arrive?");
+            return (["I wonder when my food will arrive?"]);
         } else if (this.affection_lvl >= 3 && this.affection_lvl < 6) {
-            return ("Oh hey, didn't see you there.");
+            return (["Oh hey, didn't see you there."]);
         } else {
-            return ("Hey hey! Listen to this!");
+            return (["Hey hey! Listen to this!"]);
         }
     }
 };
@@ -66,14 +67,14 @@ var penguin = {
     affection_lvl: 0,
     startConversation: function() {
         if (this.affection_lvl === 0) {
-            return ("Hello. I'm penguin. Nice to meet you!");
+            return (["Hello. I'm penguin. Nice to meet you!"]);
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 3) {
-            return ("Hey again.");
+            return (["Hey again."]);
         } else if (this.affection_lvl >= 3 && this.affection_lvl < 6) {
-            return ("Will I ever pass the driving exam?");
+            return (["Will I ever pass the driving exam?"]);
         } else {
-            return ("I got my license!");
+            return (["I got my license!"]);
         }
     }
 };
@@ -177,6 +178,7 @@ function generateAllStats() {
 
 //Calls to start conversation
 var characterImage = $('#characterImage');
+
 var conversationWords = $('#conversationWords');
 
 function sentencePackage(input) {
@@ -184,31 +186,40 @@ function sentencePackage(input) {
     newParagraph.text(input);
     return newParagraph;
 }
+
+function panelPackage(input) {
+    var newPanel = $('<div>');
+    newPanel.addClass('panel-body');
+    newPanel.append(input);
+    return newPanel;
+}
+
+//Not working
 function callPolarBear() {
-    //alert(polarBear.startConversation());
+    talkingTo = 'polarBear';
     characterImage.css('background-image', 'url(./assets/images/polarBear1.jpg)');
-    var sentence = (polarBear.startConversation());
-    conversationWords.html(sentencePackage(sentence));
+    loadConversation(polarBear.startConversation());
+    var sentence = createConversation(conversationHolder);
 
     polarBear.affection_lvl++;
     talking = false;
 }
 
 function callPanda() {
-    //alert(panda.startConversation());
+    talkingTo = 'panda';
     characterImage.css('background-image', 'url(./assets/images/panda1.jpg)');
-    var sentence = (panda.startConversation());
-    conversationWords.html(sentencePackage(sentence));
+    loadConversation(panda.startConversation());
+    var sentence = createConversation(conversationHolder);
 
     panda.affection_lvl++;
     talking = false;
 }
 
 function callPenguin() {
-    //alert(penguin.startConversation());
+    talkingTo = 'penguin';
     characterImage.css('background-image', 'url(./assets/images/penguin1.jpg)');
-    var sentence = (penguin.startConversation());
-    conversationWords.html(sentencePackage(sentence));
+    loadConversation(penguin.startConversation());
+    var sentence = createConversation(conversationHolder);
 
     penguin.affection_lvl++;
     talking = false;
@@ -219,14 +230,12 @@ function playAudio(inputValue) {
     switch(inputValue) {
         case 'cafe':
         case 'patio':
-            //console.log($('#audio1'));
             $('#audio2')[0].pause();
             $('#audio2')[0].currentTime = 0;
             $('#audio1')[0].play();
             break;
         case 'bar':
         case 'table':
-            //console.log($('#audio2'));
             $('#audio1')[0].pause();
             $('#audio1')[0].currentTime = 0;
             $('#audio2')[0].play();
@@ -235,38 +244,107 @@ function playAudio(inputValue) {
     }
 }
 
-    //Choses background from assets/images
-    var backgroundOptions = $('.backgroundOptions');
-    backgroundOptions.on('click', function() {
-        //console.log($(this).data('value'));
-        if(currentLocation === $(this).data('value')) {
-            return;
-        }
-        currentLocation = $(this).data('value');
-        playAudio(currentLocation);
-        //console.log(currentLocation);
-        setBackground(currentLocation);
-        generateOptions(characters[currentLocation], $('#characters'), 'characterOptions');
-        resetCharacterButtons();
-    });
+var conversationHolder = {
+    dialogue: [],
+    dialogueLength: 0,
+    dialoguePlace: 0
+};
 
-    //This needs to be called each time options are generated because .empty removes it
-    function resetCharacterButtons() {
-        //console.log(backgroundOptions);
+function loadConversation(inputArray) {
+    conversationHolder.dialogue = inputArray;
+    conversationHolder.dialogueLength = inputArray.length;
+    conversationHolder.dialoguePlace = 0;
+    console.log(conversationHolder);
+}
 
-        var characterOptions = $('.characterOptions');
-        characterOptions.on('click', function() {
-            //console.log('Before talk check');
-            if (talking) {
-                return;
-            } else {
-                talking = true;
-            }
-            //console.log('After talk check');
-            var currentCharacter = $(this).data('value');
-            enterConversation(currentCharacter);
-            talking = false;
-            clearStats();
-            generateAllStats();
-        });
+function createConversation(conversationHolder) {
+    createNextButton(conversationHolder);
+    setNextButton();
+    return handleConversation();
+}
+
+function handleConversation() {
+    var conversation = conversationHolder.dialogue[conversationHolder.dialoguePlace];
+    conversationHolder.dialoguePlace++;
+    console.log(conversationHolder.dialoguePlace);
+    console.log(conversation);
+    conversationWords.html(panelPackage(sentencePackage(conversation)));
+    return conversation;
+}
+
+function createNextButton(conversationHolder) {
+    var nextButton = $('#nextButton');
+    var newButton = $('<button>');
+    newButton.attr('id', 'button');
+    newButton.text('Next');
+    if (conversationHolder.dialoguePlace >= conversationHolder.dialogueLength) {
+        nextButton.empty();
+    } else {
+        nextButton.empty();
+        nextButton.append(newButton);
     }
+}
+
+function setNextButton() {
+    $('#button').on('click', function() {
+        if (conversationHolder.dialoguePlace >= conversationHolder.dialogueLength) {
+            $('#nextButton').empty();
+            $('#conversationWords').empty();
+            characterImage.css('background-image', 'none');
+            checkTalkingTo();
+        } else {
+            handleConversation();
+        }
+    });
+}
+
+function checkTalkingTo() {
+    switch(talkingTo) {
+        case 'polarBear':
+            //Do something
+            console.log('Talking to ' + talkingTo + '.');
+            break;
+        case 'panda':
+            //Do something
+            console.log('Talking to ' + talkingTo + '.');
+            break;
+        case 'penguin':
+            //Do something
+            console.log('Talking to ' + talkingTo + '.');
+            break;
+        default:
+            break;
+    }
+}
+
+//Choses background from assets/images
+var backgroundOptions = $('.backgroundOptions');
+backgroundOptions.on('click', function() {
+    if(currentLocation === $(this).data('value')) {
+        return;
+    }
+    currentLocation = $(this).data('value');
+    playAudio(currentLocation);
+    setBackground(currentLocation);
+    generateOptions(characters[currentLocation], $('#characters'), 'characterOptions');
+    resetCharacterButtons();
+});
+
+//This needs to be called each time options are generated because .empty removes it
+function resetCharacterButtons() {
+
+    var characterOptions = $('.characterOptions');
+    characterOptions.on('click', function() {
+        if (talking) {
+            console.log('still running');
+            return;
+        } else {
+            talking = true;
+        }
+        var currentCharacter = $(this).data('value');
+        enterConversation(currentCharacter);
+        talking = false;
+        clearStats();
+        generateAllStats();
+    });
+}
