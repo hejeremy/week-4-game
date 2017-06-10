@@ -12,7 +12,7 @@ var characters = {
 };
 
 //Clears portrait
-$('#conversation').css('visibility', 'hidden');
+$('#conversationWords').css('visibility', 'hidden');
 
 //Tracks your current location
 var currentLocation = 'cafe';
@@ -241,33 +241,47 @@ function panelPackage(input) {
 
 //Not working
 function callPolarBear() {
+    if (talking) {
+        return;
+    } else {
+        talking = true;
+    }
     talkingTo = 'polarBear';
     characterImage.css('background-image', 'url(./assets/images/polarBear1.jpg)');
-    $('#conversation').css('visibility', 'visible');
+    $('#conversationWords').css('visibility', 'visible');
     initiateConversation(polarBear.startConversation());
 
     polarBear.affection_lvl++;
-    talking = false;
+    //talking = false;
 }
 
 function callPanda() {
-    talkingTo = 'panda';
+    if (talking) {
+        return;
+    } else {
+        talking = true;
+    }
     characterImage.css('background-image', 'url(./assets/images/panda1.jpg)');
-    $('#conversation').css('visibility', 'visible');
+    $('#conversationWords').css('visibility', 'visible');
     initiateConversation(panda.startConversation());
 
     panda.affection_lvl++;
-    talking = false;
+    //talking = false;
 }
 
 function callPenguin() {
+    if (talking) {
+        return;
+    } else {
+        talking = true;
+    }
     talkingTo = 'penguin';
     characterImage.css('background-image', 'url(./assets/images/penguin1.jpg)');
-    $('#conversation').css('visibility', 'visible');
+    $('#conversationWords').css('visibility', 'visible');
     initiateConversation(penguin.startConversation());
 
     penguin.affection_lvl++;
-    talking = false;
+    //talking = false;
 }
 
 function playAudio(inputValue) {
@@ -320,7 +334,8 @@ function handleConversation() {
 function createNextButton(conversationHolder) {
     var nextButton = $('#nextButton');
     var newButton = $('<button>');
-    newButton.attr('id', 'button');
+    newButton.attr('id', 'buttonNext');
+    newButton.addClass('btn btn-info');
     newButton.text('Next');
     if (conversationHolder.dialoguePlace >= conversationHolder.dialogueLength) {
         nextButton.empty();
@@ -331,12 +346,13 @@ function createNextButton(conversationHolder) {
 }
 
 function setNextButton() {
-    $('#button').on('click', function() {
+    $('#buttonNext').on('click', function() {
         if (conversationHolder.dialoguePlace >= conversationHolder.dialogueLength) {
             $('#nextButton').empty();
             $('#conversationWords').empty();
             characterImage.css('background-image', 'none');
-            $('#conversation').css('visibility', 'hidden');
+            $('#conversationWords').css('visibility', 'hidden');
+            talking = false;
             checkTalkingTo();
         } else {
             handleConversation();
@@ -381,15 +397,17 @@ function resetCharacterButtons() {
 
     var characterOptions = $('.characterOptions');
     characterOptions.on('click', function() {
+        /*
         if (talking) {
             console.log('still running');
             return;
         } else {
             talking = true;
         }
+        */
         var currentCharacter = $(this).data('value');
         enterConversation(currentCharacter);
-        talking = false;
+        //talking = false;
         clearStats();
         generateAllStats();
     });
