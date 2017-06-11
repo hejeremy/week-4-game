@@ -47,7 +47,7 @@ var polarBear = {
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 5) {
             return ["Welcome!"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
             return ["It's good to see you again!"];
         } else {
             return ["Hello friend!",
@@ -138,7 +138,7 @@ var panda = {
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 5) {
             return ["I wonder when my food will arrive?"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
             return ["Oh hey, didn't see you there."];
         } else {
             return ["I hope you are having a great day!"];
