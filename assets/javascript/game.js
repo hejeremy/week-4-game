@@ -590,7 +590,7 @@ function checkLocationConversation() {
                 if (selectCharacter(input)['affection_lvl'] < 1) {
                     keyChance = 0;
                 } else {
-                    keyChance = .3;
+                    keyChance = .4;
                 }
                 if (checkForKey(input, 'cafe') && generateRandomKey(keyChance)) {
                     additionalOptions.append(packageButton(type, input, input));
@@ -605,7 +605,7 @@ function checkLocationConversation() {
                 if (selectCharacter(input)['affection_lvl'] < 1) {
                     keyChance = 0;
                 } else {
-                    keyChance = .3;
+                    keyChance = .4;
                 }
                 if (checkForKey(input, 'bar') && generateRandomKey(keyChance)) {
                     additionalOptions.append(packageButton(type, input, input));
@@ -620,7 +620,7 @@ function checkLocationConversation() {
                 if (selectCharacter(input)['affection_lvl'] < 1) {
                     keyChance = 0;
                 } else {
-                    keyChance = .3;
+                    keyChance = .4;
                 }
                 if (checkForKey(input, 'table') && generateRandomKey(keyChance)) {
                     additionalOptions.append(packageButton(type, input, input));
