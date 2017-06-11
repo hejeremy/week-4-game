@@ -64,9 +64,13 @@ var polarBear = {
         } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
             return ["You've been coming more often.",
                 "I wonder if you've taken a liking to this place.",
-                "Please enjoy your stay."];
+                "I opened this cafe as a place for customers to relax.",
+                "So please enjoy your stay."];
         } else {
-            return ["Surprised to see a polar bear running this cafe?"];
+            return ["Surprised to see a polar bear running this cafe?",
+                "It's not too uncommon you know.",
+                "Us bears like to open these small joints.",
+                "I have a grizzly bear friend who runs a bar uptown."];
         }
     },
     bar: function() {
@@ -144,7 +148,7 @@ var panda = {
         if (this.affection_lvl > 15) {
             return ["Hey hey! Listen to this!",
                 "Today at the zoo,",
-                "some elementary school students came on a field trip.",
+                "Some elementary school students came on a field trip.",
                 "I put on a great show service for them!"];
         } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
             return ["You like talking to me don't you?", "I wonder if this means we're friends."];
@@ -172,16 +176,17 @@ var panda = {
     },
     patio: function() {
         if (this.affection_lvl > 15) {
-            return ["I appreciate you talking with me.",
-                "It makes me feel all warm and fuzzy.",
-                "Like basking in the sun!"];
+            return ["I like basking in the sun!",
+                "It makes me feel all warm and fuzzy on the outside.",
+                "I also appreciate you coming to talk with me.",
+                "It also makes me feel warm and fuzzy on the inside."];
         } else if (this.affection_lvl >= 10 && this.affection_lvl <= 15) {
             return ["When I first came here...",
                 "This cafe didn't serve bamboo.",
                 "Can you believe that?"];
         } else {
             return ["Normally I would be sitting inside,",
-                "but being outside is nice too sometimes!"];
+                "But being outside is nice too sometimes!"];
         }
     }
 };
@@ -242,8 +247,8 @@ var penguin = {
                 "I finally have a driver's liscense!"];
         } else if (this.affection_lvl >= 10 && this.affection_lvl <= 15) {
             return ["I won't give up on the driving exam!",
-                "It's like they say,",
-                "you can't succeed if you don't try."];
+                "It's like they say.",
+                "You can't succeed if you don't try!"];
         } else {
             return ["Sometimes I like this quiet corner",
                 "It helps me think."];
