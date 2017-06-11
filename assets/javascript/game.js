@@ -58,7 +58,7 @@ var polarBear = {
         if (this.affection_lvl > 9) {
             return ["It's always good to see a familiar face.",
                 "Sometimes this place doesn't have many patrons,",
-                "and it feels rather lonely.",
+                "And it feels rather lonely.",
                 "Just so you know.",
                 "You will always be welcome here."];
         } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
