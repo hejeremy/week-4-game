@@ -517,7 +517,13 @@ function checkLocationConversation() {
     switch (currentLocation) {
         case 'cafe':
             characters.cafe.forEach(function(input) {
-                if (checkForKey(input, 'cafe') && generateRandomKey(.3)) {
+                var keyChance = 0;
+                if (selectCharacter(input)['affection_lvl'] < 1) {
+                    keyChance = 0;
+                } else {
+                    keyChance = .3;
+                }
+                if (checkForKey(input, 'cafe') && generateRandomKey(keyChance)) {
                     additionalOptions.append(packageButton(type, input, input));
                 } else {
                     //console.log('Character ' + input + ' does not have this key.');
@@ -526,7 +532,13 @@ function checkLocationConversation() {
             break;
         case 'bar':
             characters.bar.forEach(function(input) {
-                if (checkForKey(input, 'bar') && generateRandomKey(.3)) {
+                var keyChance = 0;
+                if (selectCharacter(input)['affection_lvl'] < 1) {
+                    keyChance = 0;
+                } else {
+                    keyChance = .3;
+                }
+                if (checkForKey(input, 'bar') && generateRandomKey(keyChance)) {
                     additionalOptions.append(packageButton(type, input, input));
                 } else {
                     //console.log('Character ' + input + ' does not have this key.');
@@ -535,7 +547,13 @@ function checkLocationConversation() {
             break;
         case 'table':
             characters.table.forEach(function(input) {
-                if (checkForKey(input, 'table') && generateRandomKey(.3)) {
+                var keyChance = 0;
+                if (selectCharacter(input)['affection_lvl'] < 1) {
+                    keyChance = 0;
+                } else {
+                    keyChance = .3;
+                }
+                if (checkForKey(input, 'table') && generateRandomKey(keyChance)) {
                     additionalOptions.append(packageButton(type, input, input));
                 } else {
                     //console.log('Character ' + input + ' does not have this key.');
@@ -544,7 +562,13 @@ function checkLocationConversation() {
             break;
         case 'patio':
             characters.patio.forEach(function(input) {
-                if (checkForKey(input, 'patio') && generateRandomKey(.5)) {
+                var keyChance = 0;
+                if (selectCharacter(input)['affection_lvl'] < 1) {
+                    keyChance = 0;
+                } else {
+                    keyChance = .3;
+                }
+                if (checkForKey(input, 'patio') && generateRandomKey(keyChance)) {
                     additionalOptions.append(packageButton(type, input, input));
                 } else {
                     //console.log('Character ' + input + ' does not have this key.');
@@ -634,6 +658,11 @@ function setButtonByClass(inputClass) {
 //Special conversation: personalConversation
 function setLocationConversationButton() {
     $('.locationConversation').on('click', function() {
+        if (talking) {
+            return;
+        } else {
+            talking = true;
+        }
         var buttonValue = $(this).attr('value');
         var updateCharacter = selectCharacter(buttonValue);
         startLocationConversation(buttonValue, currentLocation);
