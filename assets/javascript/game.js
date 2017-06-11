@@ -75,18 +75,19 @@ var polarBear = {
     },
     bar: function() {
         if (this.affection_lvl > 9) {
+            return ["Oh, back again are we?",
+                "Don't have too much now.",
+                "You'll feel sick later if you do.",
+                "Here have some more water."
+                "Always hydrate well when drinking."];
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
             return ["Fancy a drink friend?",
                 "Or just a tonic for now?",
                 "Feel free to talk about your problems.",
                 "I'll do my best to listen."];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
-            return ["Oh, back again are we?",
-                "Don't have too much now.",
-                "You'll feel sick later if you do."];
         } else {
             return ["It's a bit early for a drink isn't it?",
-                "I'll start you off with some water for now.",
-                "Always hydrate well when drinking."];
+                "I'll start you off with some water for now."];
         }
     },
     initialConversation1: function() {
