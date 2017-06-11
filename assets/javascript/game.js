@@ -178,9 +178,9 @@ var panda = {
     patio: function() {
         if (this.affection_lvl > 15) {
             return ["I like basking in the sun!",
-                "It makes me feel all warm and fuzzy on the outside.",
+                "It makes me feel warm and fuzzy on the outside.",
                 "I also appreciate you coming to talk with me.",
-                "It also makes me feel warm and fuzzy on the inside."];
+                "It makes me feel warm and fuzzy on the inside."];
         } else if (this.affection_lvl >= 10 && this.affection_lvl <= 15) {
             return ["When I first came here...",
                 "This cafe didn't serve bamboo.",
