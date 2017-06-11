@@ -1,3 +1,12 @@
+//Instructions
+$(document).ready(function() {
+alert('Welcome to Polar Bear Cafe!'
+        + "\nClick on the buttons to change scenery or talk to the characters."
+        + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'."
+        + "\nTalking to characters raises 'affection_lvl'."
+        + "\nConversations change depending 'affection_lvl'."
+        + "\nLook out for addtional conversation choices that appear! These depend on your location and add a boost to your 'affection_lvl'!");
+});
 
 //Backgrounds list
 var backgrounds = ['cafe', 'bar', 'table', 'patio'];
