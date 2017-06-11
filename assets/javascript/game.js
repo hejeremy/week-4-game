@@ -5,7 +5,7 @@ $(document).ready(function() {
    + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'."
    + "\nTalking to characters raises 'affection_lvl'."
    + "\nConversations change depending 'affection_lvl'."
-   + "\nLook out for '+' conversation choices that appear! These are unique and don't always spawn. They vary depending on your location. Click these to add a boost to your 'affection_lvl'!");
+   + "\nLook out for '+' conversation choices that appear! These are unique and don't always spawn. They vary depending on your location, so visit different spots frequently! Click these to add a boost to your 'affection_lvl'!");
 });
 
 //Backgrounds list
