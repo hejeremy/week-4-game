@@ -118,9 +118,9 @@ var panda = {
     cafe: function() {
         if (this.affection_lvl > 9) {
             return ["Hey hey! Listen to this!",
-                    "Today at the zoo,",
-                    "some elementary school students came on a field trip.",
-                    "I put on a great show service for them!"];
+                "Today at the zoo,",
+                "some elementary school students came on a field trip.",
+                "I put on a great show service for them!"];
         } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
             return ["You like talking to me don't you?", "I wonder if this means we're friends."];
         } else {
@@ -163,9 +163,9 @@ var penguin = {
     cafe: function() {
         if (this.affection_lvl > 9) {
             return ["I appreciate that you always listen to me.",
-                    "Because of your support,",
-                    "I passed the driving exam!",
-                    "I finally have a driver's liscense!"];
+                "Because of your support,",
+                "I passed the driving exam!",
+                "I finally have a driver's liscense!"];
         } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
             return ["I wonder if I'll do better this time?",
                 "Oh well it's like they say,",
@@ -178,9 +178,9 @@ var penguin = {
     table: function() {
         if (this.affection_lvl > 9) {
             return ["I appreciate that you always listen to me.",
-                    "Because of your support,",
-                    "I passed the driving exam!",
-                    "I finally have a driver's liscense!"];
+                "Because of your support,",
+                "I passed the driving exam!",
+                "I finally have a driver's liscense!"];
         } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
             return ["I won't give up on the driving exam!",
                 "It's like they say,",
@@ -417,20 +417,30 @@ function createNextButton(conversationHolder) {
 }
 
 function setNextButton() {
-    $('#buttonNext').on('click', function() {
-        if (conversationHolder.dialoguePlace >= conversationHolder.dialogueLength) {
-            //$('#nextButton').empty();
-            $('#conversationWords').empty();
-            characterImage.css('background-image', 'none');
-            $('#conversationWords').css('visibility', 'hidden');
-            talking = false;
-            refreshStats();
-            $(this).remove();
-        } else {
-            handleConversation();
-        }
-    });
+    $('#buttonNext').on('click', nextButtonFunction);
 }
+
+function nextButtonFunction() {
+    if (conversationHolder.dialoguePlace >= conversationHolder.dialogueLength) {
+        $('#conversationWords').empty();
+        characterImage.css('background-image', 'none');
+        $('#conversationWords').css('visibility', 'hidden');
+        talking = false;
+        refreshStats();
+        $('#nextButton').empty();
+    } else {
+        handleConversation();
+    }
+}
+
+$(document).keyup(function (event) {
+    if (talking && event.key.toLowerCase() === 'enter') {
+        nextButtonFunction();
+    } else {
+        return;
+    }
+    //alert('The key pressed was: ' + event.key.toLowerCase());
+});
 
 function checkTalkingTo() {
     switch(talkingTo) {
@@ -471,13 +481,13 @@ function resetCharacterButtons() {
     var characterOptions = $('.characterOptions');
     characterOptions.on('click', function() {
         /*
-        if (talking) {
-            console.log('still running');
-            return;
-        } else {
-            talking = true;
-        }
-        */
+           if (talking) {
+           console.log('still running');
+           return;
+           } else {
+           talking = true;
+           }
+           */
         var currentCharacter = $(this).data('value');
         enterConversation(currentCharacter);
         //talking = false;
