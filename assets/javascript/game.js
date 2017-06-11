@@ -1,12 +1,14 @@
 //Instructions
-$(document).ready(function() {
-alert('Welcome to Polar Bear Cafe!'
-        + "\nClick on the buttons to change scenery or talk to the characters."
-        + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'."
-        + "\nTalking to characters raises 'affection_lvl'."
-        + "\nConversations change depending 'affection_lvl'."
-        + "\nLook out for addtional conversation choices that appear! These depend on your location and add a boost to your 'affection_lvl'!");
-});
+/*
+   $(document).ready(function() {
+   alert('Welcome to Polar Bear Cafe!'
+   + "\nClick on the buttons to change scenery or talk to the characters."
+   + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'."
+   + "\nTalking to characters raises 'affection_lvl'."
+   + "\nConversations change depending 'affection_lvl'."
+   + "\nLook out for addtional conversation choices that appear! These depend on your location and add a boost to your 'affection_lvl'!");
+   });
+   */
 
 //Backgrounds list
 var backgrounds = ['cafe', 'bar', 'table', 'patio'];
@@ -69,6 +71,22 @@ var polarBear = {
             return ["Surprised to see a polar bear running this cafe?"];
         }
     },
+    bar: function() {
+        if (this.affection_lvl > 9) {
+            return ["Fancy a drink friend?",
+                "Or just a tonic for now?",
+                "Feel free to talk about your problems.",
+                "I'll do my best to listen."];
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
+            return ["Oh, back again are we?",
+                "Don't have too much now.",
+                "You'll feel sick later if you do."];
+        } else {
+            return ["It's a bit early for a drink isn't it?",
+                "I'll start you off with some water for now.",
+                "Always hydrate well when drinking."];
+        }
+    },
     initialConversation1: function() {
         var speech = ['Would you like to order something?.'];
         //initiateConversation(speech);
@@ -125,23 +143,41 @@ var panda = {
         }
     },
     cafe: function() {
-        if (this.affection_lvl > 9) {
+        if (this.affection_lvl > 15) {
             return ["Hey hey! Listen to this!",
                 "Today at the zoo,",
                 "some elementary school students came on a field trip.",
                 "I put on a great show service for them!"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
             return ["You like talking to me don't you?", "I wonder if this means we're friends."];
         } else {
-            return ["So today at the zoo..."];
+            return ["So today at the zoo...",
+            "No, it's too embarrassing to say."];
+        }
+    },
+    bar: function() {
+        if (this.affection_lvl > 15) {
+            return ["I wonder if I can get a drink now?",
+                "But Polar Bear said I shouldn't...",
+                "Then again...",
+                "No, definitely not!"];
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+            return ["Polar Bear won't let me have any hard drinks.",
+                "I swear I'm old enough!",
+                "Then again, my tolerance is low..."];
+        } else {
+            return ["...",
+                "Maybe just a little.",
+                "...",
+                "Nevermind..."];
         }
     },
     patio: function() {
-        if (this.affection_lvl > 9) {
+        if (this.affection_lvl > 15) {
             return ["I appreciate you talking with me.",
                 "It makes me feel all warm and fuzzy.",
                 "Like basking in the sun!"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
+        } else if (this.affection_lvl >= 10 && this.affection_lvl <= 15) {
             return ["When I first came here...",
                 "This cafe didn't serve bamboo.",
                 "Can you believe that?"];
@@ -162,7 +198,7 @@ var penguin = {
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 5) {
             return (["Hey again."]);
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
             return (["Will I ever pass the driving exam?"]);
         } else {
             return (["I got my license!",
@@ -170,12 +206,12 @@ var penguin = {
         }
     },
     cafe: function() {
-        if (this.affection_lvl > 9) {
+        if (this.affection_lvl > 15) {
             return ["I appreciate that you always listen to me.",
                 "Because of your support,",
                 "I passed the driving exam!",
                 "I finally have a driver's liscense!"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
             return ["I wonder if I'll do better this time?",
                 "Oh well it's like they say,",
                 "you can't succeed if you don't try."];
@@ -184,13 +220,29 @@ var penguin = {
                 "I can't really help you right now."];
         }
     },
+    bar: function() {
+        if (this.affection_lvl > 15) {
+            return ["I'm so happy to have my driver's liscense.",
+                "Just in time for my date with Ms. Penko this weekend!",
+                "I'm glad you encouraged me all this way.",
+                "Couldn't have done it without you!",
+                "So let me buy your drinks tonight!"];
+        } else if (this.affection_lvl >=5 && this.affection_lvl <=15) {
+            return ["Nothing too strong for me.",
+                "I have to attend driving lessons tomorrow.",
+                "Just a tonic for me thanks."];
+        } else {
+            return ["I would like to take Ms. Penko here someday.",
+                "I should probably ask her out first though."];
+        }
+    },
     table: function() {
-        if (this.affection_lvl > 9) {
+        if (this.affection_lvl > 15) {
             return ["I appreciate that you always listen to me.",
                 "Because of your support,",
                 "I passed the driving exam!",
                 "I finally have a driver's liscense!"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
+        } else if (this.affection_lvl >= 10 && this.affection_lvl <= 15) {
             return ["I won't give up on the driving exam!",
                 "It's like they say,",
                 "you can't succeed if you don't try."];
@@ -685,7 +737,7 @@ function setLocationConversationButton() {
         var buttonValue = $(this).attr('value');
         var updateCharacter = selectCharacter(buttonValue);
         startLocationConversation(buttonValue, currentLocation);
-        updateCharacter['affection_lvl'] += 5;
+        updateCharacter['affection_lvl'] += 3;
         //console.log('Runs and returns value: ' + $(this).attr('value'));
         $(this).remove();
     });
