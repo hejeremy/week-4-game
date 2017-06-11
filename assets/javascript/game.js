@@ -43,8 +43,8 @@ var polarBear = {
         } else {
             return ["Hello friend!",
                 "Would you like the usual?",
-                "I got something nice.",
-                "It's fresh and just in today!"];
+                "I got some fresh ground coffee.",
+                "It just came in today!"];
         }
     },
     initialConversation1: function() {
