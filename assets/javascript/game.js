@@ -78,7 +78,7 @@ var polarBear = {
             return ["Oh, back again are we?",
                 "Don't have too much now.",
                 "You'll feel sick later if you do.",
-                "Here have some more water."
+                "Here have some more water.",
                 "Always hydrate well when drinking."];
         } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
             return ["Fancy a drink friend?",
@@ -267,8 +267,7 @@ function setBackground(inputValue) {
     var body = $('body');
     body.css('background-image', imagePath);
     //$('body').css('background-size', '100%, auto');
-    body.css('background-repeat', 'no-repeat')
-
+    body.css('background-repeat', 'no-repeat');
 }
 
 //Generates button options from chosen array, then appends them to a selected element
@@ -485,7 +484,7 @@ function createNextButton(conversationHolder) {
 }
 
 function setNextButton() {
-    $('#buttonNext').on('click', nextButtonFunction);
+    $('#buttonNext').mouseup(nextButtonFunction);
 }
 
 function nextButtonFunction() {
@@ -531,7 +530,7 @@ function checkTalkingTo() {
 
 //Choses background from assets/images
 var backgroundOptions = $('.backgroundOptions');
-backgroundOptions.on('click', function() {
+backgroundOptions.mouseup(function() {
     if(currentLocation === $(this).data('value')) {
         return;
     }
@@ -547,7 +546,7 @@ backgroundOptions.on('click', function() {
 function resetCharacterButtons() {
 
     var characterOptions = $('.characterOptions');
-    characterOptions.on('click', function() {
+    characterOptions.mouseup(function() {
         /*
            if (talking) {
            console.log('still running');
@@ -735,7 +734,7 @@ function setButtonByClass(inputClass) {
 
 //Special conversation: personalConversation
 function setLocationConversationButton() {
-    $('.locationConversation').on('click', function() {
+    $('.locationConversation').mouseup(function() {
         if (talking) {
             return;
         } else {
@@ -752,7 +751,7 @@ function setLocationConversationButton() {
 
 //Special conversation: responsiveConversation
 function setResponsiveConversationButton() {
-    $('.responsiveConverstion').on('click', function() {
+    $('.responsiveConverstion').mouseup(function() {
         $(this).remove();
     });
 }
