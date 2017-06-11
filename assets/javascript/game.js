@@ -322,8 +322,8 @@ function callPolarBear() {
     talkingTo = 'polarBear';
     initiateConversation(polarBear.startConversation(), talkingTo);
 
-    checkLocationConversation();
     polarBear.affection_lvl++;
+    checkLocationConversation();
     //talking = false;
 }
 
@@ -336,8 +336,8 @@ function callPanda() {
     talkingTo = 'panda';
     initiateConversation(panda.startConversation(), talkingTo);
 
-    checkLocationConversation();
     panda.affection_lvl++;
+    checkLocationConversation();
     //talking = false;
 }
 
@@ -350,8 +350,8 @@ function callPenguin() {
     talkingTo = 'penguin';
     initiateConversation(penguin.startConversation(), talkingTo);
 
-    checkLocationConversation();
     penguin.affection_lvl++;
+    checkLocationConversation();
     //talking = false;
 }
 
