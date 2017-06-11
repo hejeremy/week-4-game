@@ -1,11 +1,11 @@
 //Instructions
 $(document).ready(function() {
-   alert('Welcome to Polar Bear Cafe!'
-   + "\nClick on the buttons to change scenery or talk to the characters."
-   + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'."
-   + "\nTalking to characters raises 'affection_lvl'."
-   + "\nConversations change depending 'affection_lvl'."
-   + "\nLook out for '+' conversation choices that appear! These are unique and don't always spawn. They vary depending on your location, so visit different spots frequently! Click these to add a boost to your 'affection_lvl'!");
+    alert('Welcome to Polar Bear Cafe!'
+            + "\nClick on the buttons to change scenery or talk to the characters."
+            + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'."
+            + "\nTalking to characters raises 'affection_lvl'."
+            + "\nConversations change depending 'affection_lvl'."
+            + "\nLook out for '+' conversation choices that appear! These are unique and don't always spawn. They vary depending on your location, so visit different spots frequently! Click these to add a boost to your 'affection_lvl'!");
 });
 
 //Backgrounds list
@@ -154,7 +154,7 @@ var panda = {
             return ["You like talking to me don't you?", "I wonder if this means we're friends."];
         } else {
             return ["So today at the zoo...",
-            "No, it's too embarrassing to say."];
+                "No, it's too embarrassing to say."];
         }
     },
     bar: function() {
@@ -200,9 +200,12 @@ var penguin = {
             return (["Hello. I'm penguin. Nice to meet you!"]);
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 5) {
-            return (["Hey again."]);
+            return ["Is there something you need?",
+                "I can't really help you right now."];
         } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
-            return (["Will I ever pass the driving exam?"]);
+            return (["Hey again.",
+                    "I see you more often lately.",
+                    "I guess you like this place too huh."]);
         } else {
             return (["I got my license!",
                     "I'm going to ask Ms. Penko out for a drive!"]);
@@ -219,8 +222,8 @@ var penguin = {
                 "Oh well it's like they say,",
                 "you can't succeed if you don't try."];
         } else {
-            return ["Is there something you need?",
-                "I can't really help you right now."];
+            return (["Will I ever pass the driving exam?",
+                    "I won't give up!"]);
         }
     },
     bar: function() {
