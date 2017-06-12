@@ -226,8 +226,8 @@ var panda = {
         } else if (this.affection >= 5 && this.affection <= 15) {
             return ["I often sit with Penguin here.",
                 "And talk to him about eating bamboo.",
-                "Sometimes he doesn't seem very interested in eating it.",
-                "I say, don't knock it til you've tried it!"];
+                "He doesn't seem very interested in eating it.",
+                "I always tell him, don't knock it til you've tried it!"];
         } else {
             return ["You like this corner too?",
                 "It is relaxing."];
