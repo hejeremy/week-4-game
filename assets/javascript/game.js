@@ -347,12 +347,13 @@ var penguin = {
 
 function instructionsAlert() {
     alert('Welcome to Polar Bear Cafe!\n'
-            + "\nClick on the buttons to change scenery or talk to the characters.\n"
+            + "\nClick on the buttons to change scenery or initiate basic conversation with the characters.\n"
             + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'.\n"
-            + "\nTalking to characters raises 'affection'.\n"
-            + "\nConversations change depending 'affection'.\n"
+            + "\nTalking to characters raises 'AFFECTION'.\n"
+            + "\nConversations change depending on 'AFFECTION'.\n"
             + "\nLook out for '+' conversation choices that appear! These are unique and don't always spawn. They vary depending on your location, so visit different spots frequently! Click these to add a boost to your 'affection'!\n"
-            + "\nBe sure to play multiple times as some conversations no longer appear after 'affection' exceeds a certain point.\n");
+            + "\nBe sure to reset 'AFFECTION' occasionally as some unique conversations no longer appear after 'AFFECTION' exceeds a certain point.\n",
+            + "\nTry to discover all unique conversations!");
 }
 
 function reset() {
