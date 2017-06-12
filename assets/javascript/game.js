@@ -324,11 +324,10 @@ var penguin = {
     patio: function() {
         if (this.affection > 15) {
             return ["Being in this tranquil atmosphere,",
-                "Makes me think maybe I can enjoy this moment as it is.",
-                "After all,",
-                "You all are here with me.",
-                "And that alone lessens the burden of my worries.",
-                "Perhaps I should accept it for what it's worth."];
+                "Makes me think just maybe,",
+                "I can enjoy this moment for what it's worth.",
+                "You all are here with me,",
+                "And that alone lessens the burden of my worries."];
         } else if (this.affection >= 5 && this.affection <= 15) {
             return ["It feels like a nice day.",
                 "Of course it might rain at any moment.",
@@ -706,6 +705,7 @@ function checkLocationConversation() {
     var additionalOptions = $('#conversationOptions');
     additionalOptions.empty();
     var type = 'locationConversation';
+    var spawnRate = .45;
     switch (currentLocation) {
         case 'cafe':
             characters.cafe.forEach(function(input) {
@@ -713,7 +713,7 @@ function checkLocationConversation() {
                 if (selectCharacter(input)['affection'] < 1) {
                     keyChance = 0;
                 } else {
-                    keyChance = .4;
+                    keyChance = spawnRate;
                 }
                 if (checkForKey(input, 'cafe') && generateRandomKey(keyChance)) {
                     additionalOptions.append(packageButton(type, input, input));
@@ -728,7 +728,7 @@ function checkLocationConversation() {
                 if (selectCharacter(input)['affection'] < 1) {
                     keyChance = 0;
                 } else {
-                    keyChance = .4;
+                    keyChance = spawnRate;
                 }
                 if (checkForKey(input, 'bar') && generateRandomKey(keyChance)) {
                     additionalOptions.append(packageButton(type, input, input));
@@ -743,7 +743,7 @@ function checkLocationConversation() {
                 if (selectCharacter(input)['affection'] < 1) {
                     keyChance = 0;
                 } else {
-                    keyChance = .4;
+                    keyChance = spawnRate;
                 }
                 if (checkForKey(input, 'table') && generateRandomKey(keyChance)) {
                     additionalOptions.append(packageButton(type, input, input));
@@ -758,7 +758,7 @@ function checkLocationConversation() {
                 if (selectCharacter(input)['affection'] < 1) {
                     keyChance = 0;
                 } else {
-                    keyChance = .3;
+                    keyChance = spawnRate;
                 }
                 if (checkForKey(input, 'patio') && generateRandomKey(keyChance)) {
                     additionalOptions.append(packageButton(type, input, input));
