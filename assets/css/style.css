@@ -19,8 +19,8 @@ body {
 }
 
 #characterImage {
-    height: 300px;
-    width: auto;
+    min-height: 300px;
+    min-width: 300px;
     background-repeat: no-repeat;
 }
 

@@ -8,7 +8,7 @@ generateOptions(backgrounds, $('#backgrounds'), 'backgroundOptions');
 var characters = {
     cafe: ['polarBear', 'panda', 'penguin'],
     bar: ['polarBear', 'panda', 'penguin'],
-    table: ['polarBear', 'penguin'],
+    table: ['polarBear', 'panda', 'penguin'],
     patio: ['polarBear', 'panda'],
 };
 
@@ -216,6 +216,23 @@ var panda = {
                 "Nevermind..."];
         }
     },
+    table: function() {
+        if (this.affection > 15) {
+            return ["Zzzzz...",
+                "Huh? Wuzzat?",
+                "Oh, I was just dreaming of eating bamboo.",
+                "What!?",
+                "You don't dream of eating bamboo?"];
+        } else if (this.affection >= 5 && this.affection <= 15) {
+            return ["I often sit with Penguin here.",
+                "And talk to him about eating bamboo.",
+                "Sometimes he doesn't seem very interested in eating it.",
+                "I say, don't knock it til you've tried it!"];
+        } else {
+            return ["You like this corner too?",
+                "It is relaxing."];
+        }
+    },
     patio: function() {
         if (this.affection > 15) {
             return ["I like basking in the sun!",
@@ -339,7 +356,7 @@ restart();
 
 //Sets background scene
 function setBackground(inputValue) {
-    var imageName = inputValue + '.jpg';
+    var imageName = inputValue + '.png';
     var imagePath = "url(assets/images/" + imageName + ")";
 
     var body = $('body');
@@ -398,7 +415,7 @@ function generateConversation(inputValue) {
 //Generates character stats
 function generateCharacterStats(inputObj) {
     var setCharacter = $('<div>');
-    setCharacter.addClass('col-sm-4 panel panel-info');
+    setCharacter.addClass('col-sm-4 panel panel-info statsPanel');
     var setCharacterHeader = $('<div>');
     setCharacterHeader.addClass('panel-heading');
     var panelTitle = $('<h3>');
@@ -649,15 +666,15 @@ function initiateConversation(inputConversation, inputCharacter) {
 function setCharacterBackground(inputCharacter) {
     switch (inputCharacter) {
         case 'polarBear':
-            characterImage.css('background-image', 'url(./assets/images/polarBear1.jpg)');
+            characterImage.css('background-image', 'url(./assets/images/polarBear1.png)');
             $('#conversationWords').css('visibility', 'visible');
             break;
         case 'panda':
-            characterImage.css('background-image', 'url(./assets/images/panda1.jpg)');
+            characterImage.css('background-image', 'url(./assets/images/panda1.png)');
             $('#conversationWords').css('visibility', 'visible');
             break;
         case 'penguin':
-            characterImage.css('background-image', 'url(./assets/images/penguin1.jpg)');
+            characterImage.css('background-image', 'url(./assets/images/penguin1.png)');
             $('#conversationWords').css('visibility', 'visible');
             break;
         default:
