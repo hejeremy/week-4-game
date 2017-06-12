@@ -10,7 +10,7 @@ footer {
 }
 
 body {
-    min-height: 600px;
+    min-height: 800px;
     width: auto;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -31,4 +31,8 @@ body {
     border: solid grey 2px;
     height: auto;
     width: auto;
+}
+
+#conversationWords {
+    visibility: hidden;
 }

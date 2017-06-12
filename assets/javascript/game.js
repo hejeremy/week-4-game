@@ -1,14 +1,4 @@
 //Polar Bear Cafe
-//Instructions
-$(document).ready(function() {
-    alert('Welcome to Polar Bear Cafe!\n'
-            + "\nClick on the buttons to change scenery or talk to the characters.\n"
-            + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'.\n"
-            + "\nTalking to characters raises 'affection_lvl'.\n"
-            + "\nConversations change depending 'affection_lvl'.\n"
-            + "\nLook out for '+' conversation choices that appear! These are unique and don't always spawn. They vary depending on your location, so visit different spots frequently! Click these to add a boost to your 'affection_lvl'!\n"
-            + "\nBe sure to play multiple times as some conversations no longer appear after 'affection_lvl' exceeds a certain point.\n");
-});
 
 //Backgrounds list
 var backgrounds = ['cafe', 'bar', 'table', 'patio'];
@@ -23,7 +13,7 @@ var characters = {
 };
 
 //Clears portrait
-$('#conversationWords').css('visibility', 'hidden');
+//$('#conversationWords').css('visibility', 'hidden');
 
 //Tracks your current location
 var currentLocation = 'cafe';
@@ -41,7 +31,7 @@ var talkingTo = '';
 //Character info and stats
 var polarBear = {
     name: 'Polar Bear',
-    species: 'polar bear',
+    //species: 'polar bear',
     affection_lvl: 0,
     startConversation: function() {
         if (this.affection_lvl === 0) {
@@ -174,7 +164,7 @@ var polarBear = {
 
 var panda = {
     name: 'Panda',
-    species: 'giant panda',
+    //species: 'giant panda',
     affection_lvl: 0,
     startConversation: function() {
         if (this.affection_lvl === 0) {
@@ -237,7 +227,7 @@ var panda = {
 
 var penguin = {
     name: 'Penguin',
-    species: 'penguin',
+    //species: 'penguin',
     affection_lvl: 0,
     startConversation: function() {
         if (this.affection_lvl === 0) {
@@ -302,6 +292,34 @@ var penguin = {
         }
     }
 };
+
+//Instructions
+//$(document).ready(restart());
+
+function instructionsAlert() {
+    alert('Welcome to Polar Bear Cafe!\n'
+            + "\nClick on the buttons to change scenery or talk to the characters.\n"
+            + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'.\n"
+            + "\nTalking to characters raises 'affection_lvl'.\n"
+            + "\nConversations change depending 'affection_lvl'.\n"
+            + "\nLook out for '+' conversation choices that appear! These are unique and don't always spawn. They vary depending on your location, so visit different spots frequently! Click these to add a boost to your 'affection_lvl'!\n"
+            + "\nBe sure to play multiple times as some conversations no longer appear after 'affection_lvl' exceeds a certain point.\n");
+}
+
+function restart() {
+    polarBear.affection_lvl = 0;
+    panda.affection_lvl = 0;
+    penguin.affection_lvl = 0;
+    refreshStats();
+    instructionsAlert();
+}
+
+//Starts game
+restart();
+
+//Restart button
+//$('#resetButton').mouseup(restart());
+
 //Sets background scene
 function setBackground(inputValue) {
     var imageName = inputValue + '.jpg';
@@ -358,7 +376,7 @@ function generateConversation(inputValue) {
 }
 
 //Opens stats
-generateAllStats();
+//generateAllStats();
 
 //Generates character stats
 function generateCharacterStats(inputObj) {
