@@ -26,6 +26,7 @@ resetCharacterButtons();
 
 //Tracks if you're in a conversation
 var talking = false;
+showButtons();
 var talkingTo = '';
 
 //Character info and stats
@@ -499,6 +500,7 @@ function callPolarBear() {
         return;
     } else {
         talking = true;
+        hideButtons();
     }
     talkingTo = 'polarBear';
     initiateConversation(polarBear.startConversation(), talkingTo);
@@ -513,6 +515,7 @@ function callPanda() {
         return;
     } else {
         talking = true;
+        hideButtons();
     }
     talkingTo = 'panda';
     initiateConversation(panda.startConversation(), talkingTo);
@@ -527,6 +530,7 @@ function callPenguin() {
         return;
     } else {
         talking = true;
+        hideButtons();
     }
     talkingTo = 'penguin';
     initiateConversation(penguin.startConversation(), talkingTo);
@@ -607,6 +611,7 @@ function nextButtonFunction() {
         characterImage.css('background-image', 'none');
         $('#conversationWords').css('visibility', 'hidden');
         talking = false;
+        showButtons();
         refreshStats();
         $('#nextButton').empty();
     } else {
@@ -667,6 +672,7 @@ function resetCharacterButtons() {
            return;
            } else {
            talking = true;
+           hideButtons();
            }
            */
         var currentCharacter = $(this).data('value');
@@ -854,6 +860,7 @@ function setLocationConversationButton() {
             return;
         } else {
             talking = true;
+            hideButtons();
         }
         var buttonValue = $(this).attr('value');
         var updateCharacter = selectCharacter(buttonValue);
@@ -874,3 +881,15 @@ function setResponsiveConversationButton() {
 $('#resetLink').mouseup(function() {
     reset();
 });
+
+function hideButtons() {
+    $('#backgrounds').css('visibility','hidden');
+    $('#characters').css('visibility','hidden');
+    $('#conversationOptions').css('visibility','hidden');
+}
+
+function showButtons() {
+    $('#backgrounds').css('visibility','visible');
+    $('#characters').css('visibility','visible');
+    $('#conversationOptions').css('visibility','visible');
+}
