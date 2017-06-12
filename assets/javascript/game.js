@@ -9,7 +9,7 @@ var characters = {
     cafe: ['polarBear', 'panda', 'penguin'],
     bar: ['polarBear', 'panda', 'penguin'],
     table: ['polarBear', 'panda', 'penguin'],
-    patio: ['polarBear', 'panda'],
+    patio: ['polarBear', 'panda', 'penguin'],
 };
 
 //Clears portrait
@@ -319,6 +319,25 @@ var penguin = {
                 "It helps me think.",
                 "...",
                 "Does it seem like I'm brooding?"];
+        }
+    },
+    patio: function() {
+        if (this.affection > 15) {
+            return ["Being in this tranquil atmosphere,",
+                "Makes me think maybe I can enjoy this moment as it is.",
+                "After all,",
+                "You all are here with me.",
+                "And that alone lessens the burden of my worries.",
+                "Perhaps I should accept it for what it's worth."];
+        } else if (this.affection >= 5 && this.affection <= 15) {
+            return ["It feels like a nice day.",
+                "Of course it might rain at any moment.",
+                "The sky looks clear though...",
+                "No, no.",
+                "I must always expect the worst."];
+        } else {
+            return ["It's a bit hot out here...",
+                "And Polar Bear really needs to weed the yard."];
         }
     }
 };
