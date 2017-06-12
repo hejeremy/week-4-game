@@ -32,15 +32,17 @@ var talkingTo = '';
 var polarBear = {
     name: 'Polar Bear',
     //species: 'polar bear',
-    affection_lvl: 0,
+    affection: 0,
     startConversation: function() {
-        if (this.affection_lvl === 0) {
-            return ["Hi there! My name is Polar Bear, welcome to my cafe!"];
+        if (this.affection === 0) {
+            return ["Hi there!",
+                "My name is Polar Bear.",
+                "Welcome to my cafe!"];
         }
-        else if (this.affection_lvl > 0 && this.affection_lvl < 5) {
+        else if (this.affection > 0 && this.affection < 5) {
             return ["Yes?",
                 "Is there something on your mind?"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+        } else if (this.affection >= 5 && this.affection <= 15) {
             return ["Ah, welcome back!",
                 "It's good to see you again."];
         } else {
@@ -49,14 +51,14 @@ var polarBear = {
         }
     },
     cafe: function() {
-        if (this.affection_lvl > 15) {
+        if (this.affection > 15) {
             return ["It's always good to see a familiar face.",
                 "Sometimes this place doesn't have many patrons,",
                 "And it feels rather lonely.",
                 "...",
                 "Just so you know.",
                 "You will always be welcome here."];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+        } else if (this.affection >= 5 && this.affection <= 15) {
             return ["You've been coming more often.",
                 "I wonder if you've taken a liking to this place.",
                 "I opened this cafe as a place for customers to relax.",
@@ -69,13 +71,13 @@ var polarBear = {
         }
     },
     bar: function() {
-        if (this.affection_lvl > 9) {
+        if (this.affection > 9) {
             return ["Oh, back again are we?",
                 "Don't have too much now.",
                 "You'll feel sick later if you do.",
                 "Here have some more water.",
                 "Always hydrate well when drinking."];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+        } else if (this.affection >= 5 && this.affection <= 15) {
             return ["Fancy a drink friend?",
                 "Or just a tonic for now?",
                 "Feel free to talk about your problems.",
@@ -87,14 +89,14 @@ var polarBear = {
         }
     },
     table: function() {
-        if (this.affection_lvl > 15) {
+        if (this.affection > 15) {
             return ["Being lost in thought is a wonderful thing.",
                 "After all,",
                 "Dreams are what push us forward,",
                 "And always towards a better tomorrow.",
                 "But enough about the future.",
                 "Let us enjoy the present."];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+        } else if (this.affection >= 5 && this.affection <= 15) {
             return ["Just hanging out today friend?",
                 "I find myself lost in thought when I am here.",
                 "Perhaps you have much on your mind.",
@@ -106,13 +108,13 @@ var polarBear = {
         }
     },
     patio: function() {
-        if (this.affection_lvl > 15) {
+        if (this.affection > 15) {
             return ["I see you also enjoy the great outdoors.",
                 "Grizzly and I often visit the mountains.",
                 "We love to discover new wild ingredients to bring back.",
                 "It lets us invent new items for our menus.",
                 "Keeping things fresh and bringing new wonders back for our customers."];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+        } else if (this.affection >= 5 && this.affection <= 15) {
             return ["The scenery out here is nice isn't it?",
                 "Being able to relax and enjoy the air.",
                 "I often come out here myself to relax after a days work.",
@@ -165,42 +167,48 @@ var polarBear = {
 var panda = {
     name: 'Panda',
     //species: 'giant panda',
-    affection_lvl: 0,
+    affection: 0,
     startConversation: function() {
-        if (this.affection_lvl === 0) {
-            return (["Hey! I'm Panda! I'm a regular here. Aren't I cute?"]);
+        if (this.affection === 0) {
+            return (["Hi! I'm Panda!",
+                    "I'm a regular here.",
+                    "Do you think I'm cute?"]);
         }
-        else if (this.affection_lvl > 0 && this.affection_lvl < 5) {
-            return ["I wonder when my food will arrive?"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+        else if (this.affection > 0 && this.affection < 5) {
+            return ["It's been a while.",
+                "I wonder when my food will arrive?"];
+        } else if (this.affection >= 5 && this.affection <= 15) {
             return ["Oh hey, didn't see you there."];
         } else {
-            return ["I hope you are having a great day!"];
+            return ["Today is a good day!",
+                "I hope you are also having a good day!"];
         }
     },
     cafe: function() {
-        if (this.affection_lvl > 15) {
+        if (this.affection > 15) {
             return ["Hey hey! Listen to this!",
                 "Today at the zoo,",
                 "Some elementary school students came on a field trip.",
-                "I put on a great show service for them!"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
-            return ["You like talking to me don't you?", "I wonder if this means we're friends."];
+                "I put on an amazing show for them!"];
+        } else if (this.affection >= 5 && this.affection <= 15) {
+            return ["You like talking to me don't you?",
+                "I don't usually talk so much to people.",
+                "Does this mean we're friends?"];
         } else {
             return ["So today at the zoo...",
                 "No, it's too embarrassing to say."];
         }
     },
     bar: function() {
-        if (this.affection_lvl > 15) {
+        if (this.affection > 15) {
             return ["I wonder if I can get a drink now?",
                 "But Polar Bear said I shouldn't...",
                 "Then again...",
                 "No, definitely not!"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+        } else if (this.affection >= 5 && this.affection <= 15) {
             return ["Polar Bear won't let me have any hard drinks.",
                 "I swear I'm old enough!",
-                "Then again, my tolerance is low..."];
+                "Then again, my tolerance is bad..."];
         } else {
             return ["...",
                 "Maybe just a little.",
@@ -209,12 +217,12 @@ var panda = {
         }
     },
     patio: function() {
-        if (this.affection_lvl > 15) {
+        if (this.affection > 15) {
             return ["I like basking in the sun!",
                 "It makes me feel warm and fuzzy on the outside.",
                 "I also appreciate you coming to talk with me.",
                 "It makes me feel warm and fuzzy on the inside."];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+        } else if (this.affection >= 5 && this.affection <= 15) {
             return ["When I first came here...",
                 "This cafe didn't serve bamboo.",
                 "Can you believe that?"];
@@ -228,15 +236,18 @@ var panda = {
 var penguin = {
     name: 'Penguin',
     //species: 'penguin',
-    affection_lvl: 0,
+    affection: 0,
     startConversation: function() {
-        if (this.affection_lvl === 0) {
-            return (["Hello. I'm penguin. Nice to meet you!"]);
+        if (this.affection === 0) {
+            return (["Hello.",
+                    "I'm penguin.",
+                    "Nice to meet you!"]);
         }
-        else if (this.affection_lvl > 0 && this.affection_lvl < 5) {
+        else if (this.affection > 0 && this.affection < 5) {
             return ["Is there something you need?",
+                "Sorry.",
                 "I can't really help you right now."];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+        } else if (this.affection >= 5 && this.affection <= 15) {
             return (["Hey again.",
                     "I see you more often lately.",
                     "I guess you like this place too huh."]);
@@ -246,12 +257,12 @@ var penguin = {
         }
     },
     cafe: function() {
-        if (this.affection_lvl > 15) {
+        if (this.affection > 15) {
             return ["I appreciate that you always listen to me.",
                 "Because of your support,",
                 "I passed the driving exam!",
                 "I finally have a driver's liscense!"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+        } else if (this.affection >= 5 && this.affection <= 15) {
             return ["I wonder if I'll do better this time?",
                 "Oh well it's like they say,",
                 "you can't succeed if you don't try."];
@@ -261,34 +272,36 @@ var penguin = {
         }
     },
     bar: function() {
-        if (this.affection_lvl > 15) {
+        if (this.affection > 15) {
             return ["I'm so happy to have my driver's liscense.",
                 "Just in time for my date with Ms. Penko this weekend!",
                 "I'm glad you encouraged me all this way.",
                 "Couldn't have done it without you!",
                 "So let me buy your drinks tonight!"];
-        } else if (this.affection_lvl >=5 && this.affection_lvl <=15) {
+        } else if (this.affection >=5 && this.affection <=15) {
             return ["Nothing too strong for me.",
                 "I have to attend driving lessons tomorrow.",
-                "Just a tonic for me thanks."];
+                "Just a tonic thanks."];
         } else {
             return ["I would like to take Ms. Penko here someday.",
                 "I should probably ask her out first though."];
         }
     },
     table: function() {
-        if (this.affection_lvl > 15) {
+        if (this.affection > 15) {
             return ["I appreciate that you always listen to me.",
                 "Because of your support,",
                 "I passed the driving exam!",
                 "I finally have a driver's liscense!"];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+        } else if (this.affection >= 5 && this.affection <= 15) {
             return ["I won't give up on the driving exam!",
                 "It's like they say.",
                 "You can't succeed if you don't try!"];
         } else {
-            return ["Sometimes I like this quiet corner",
-                "It helps me think."];
+            return ["I like this quiet corner",
+                "It helps me think.",
+                "...",
+                "Does it seem like I'm brooding?"];
         }
     }
 };
@@ -300,17 +313,21 @@ function instructionsAlert() {
     alert('Welcome to Polar Bear Cafe!\n'
             + "\nClick on the buttons to change scenery or talk to the characters.\n"
             + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'.\n"
-            + "\nTalking to characters raises 'affection_lvl'.\n"
-            + "\nConversations change depending 'affection_lvl'.\n"
-            + "\nLook out for '+' conversation choices that appear! These are unique and don't always spawn. They vary depending on your location, so visit different spots frequently! Click these to add a boost to your 'affection_lvl'!\n"
-            + "\nBe sure to play multiple times as some conversations no longer appear after 'affection_lvl' exceeds a certain point.\n");
+            + "\nTalking to characters raises 'affection'.\n"
+            + "\nConversations change depending 'affection'.\n"
+            + "\nLook out for '+' conversation choices that appear! These are unique and don't always spawn. They vary depending on your location, so visit different spots frequently! Click these to add a boost to your 'affection'!\n"
+            + "\nBe sure to play multiple times as some conversations no longer appear after 'affection' exceeds a certain point.\n");
+}
+
+function reset() {
+    polarBear.affection = 0;
+    panda.affection = 0;
+    penguin.affection = 0;
+    refreshStats();
 }
 
 function restart() {
-    polarBear.affection_lvl = 0;
-    panda.affection_lvl = 0;
-    penguin.affection_lvl = 0;
-    refreshStats();
+    reset();
     instructionsAlert();
 }
 
@@ -450,7 +467,7 @@ function callPolarBear() {
     talkingTo = 'polarBear';
     initiateConversation(polarBear.startConversation(), talkingTo);
 
-    polarBear.affection_lvl++;
+    polarBear.affection++;
     checkLocationConversation();
     //talking = false;
 }
@@ -464,7 +481,7 @@ function callPanda() {
     talkingTo = 'panda';
     initiateConversation(panda.startConversation(), talkingTo);
 
-    panda.affection_lvl++;
+    panda.affection++;
     checkLocationConversation();
     //talking = false;
 }
@@ -478,7 +495,7 @@ function callPenguin() {
     talkingTo = 'penguin';
     initiateConversation(penguin.startConversation(), talkingTo);
 
-    penguin.affection_lvl++;
+    penguin.affection++;
     checkLocationConversation();
     //talking = false;
 }
@@ -592,7 +609,7 @@ function checkTalkingTo() {
 //Choses background from assets/images
 var backgroundOptions = $('.backgroundOptions');
 backgroundOptions.mouseup(function() {
-    if(currentLocation === $(this).data('value')) {
+    if(currentLocation === $(this).data('value') || talking) {
         return;
     }
     currentLocation = $(this).data('value');
@@ -656,7 +673,7 @@ function checkLocationConversation() {
         case 'cafe':
             characters.cafe.forEach(function(input) {
                 var keyChance = 0;
-                if (selectCharacter(input)['affection_lvl'] < 1) {
+                if (selectCharacter(input)['affection'] < 1) {
                     keyChance = 0;
                 } else {
                     keyChance = .4;
@@ -671,7 +688,7 @@ function checkLocationConversation() {
         case 'bar':
             characters.bar.forEach(function(input) {
                 var keyChance = 0;
-                if (selectCharacter(input)['affection_lvl'] < 1) {
+                if (selectCharacter(input)['affection'] < 1) {
                     keyChance = 0;
                 } else {
                     keyChance = .4;
@@ -686,7 +703,7 @@ function checkLocationConversation() {
         case 'table':
             characters.table.forEach(function(input) {
                 var keyChance = 0;
-                if (selectCharacter(input)['affection_lvl'] < 1) {
+                if (selectCharacter(input)['affection'] < 1) {
                     keyChance = 0;
                 } else {
                     keyChance = .4;
@@ -701,7 +718,7 @@ function checkLocationConversation() {
         case 'patio':
             characters.patio.forEach(function(input) {
                 var keyChance = 0;
-                if (selectCharacter(input)['affection_lvl'] < 1) {
+                if (selectCharacter(input)['affection'] < 1) {
                     keyChance = 0;
                 } else {
                     keyChance = .3;
@@ -783,10 +800,10 @@ function setButtonByClass(inputClass) {
             setLocationConversationButton();
             break;
         case 'personalConversation':
-            setSpecialConversationButton();
+            setPersonalConversationButton();
             break;
         case 'responsiveConversation':
-            setSpecialConversationButton();
+            setResponsiveConversationButton();
             break;
         default:
             break;
@@ -804,7 +821,7 @@ function setLocationConversationButton() {
         var buttonValue = $(this).attr('value');
         var updateCharacter = selectCharacter(buttonValue);
         startLocationConversation(buttonValue, currentLocation);
-        updateCharacter['affection_lvl'] += 3;
+        updateCharacter['affection'] += 3;
         //console.log('Runs and returns value: ' + $(this).attr('value'));
         $(this).remove();
     });
@@ -816,3 +833,7 @@ function setResponsiveConversationButton() {
         $(this).remove();
     });
 }
+
+$('#resetLink').mouseup(function() {
+    reset();
+});
