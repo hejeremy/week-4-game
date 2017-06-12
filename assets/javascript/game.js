@@ -1,11 +1,13 @@
+//Polar Bear Cafe
 //Instructions
 $(document).ready(function() {
-    alert('Welcome to Polar Bear Cafe!'
-            + "\nClick on the buttons to change scenery or talk to the characters."
-            + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'."
-            + "\nTalking to characters raises 'affection_lvl'."
-            + "\nConversations change depending 'affection_lvl'."
-            + "\nLook out for '+' conversation choices that appear! These are unique and don't always spawn. They vary depending on your location, so visit different spots frequently! Click these to add a boost to your 'affection_lvl'!");
+    alert('Welcome to Polar Bear Cafe!\n'
+            + "\nClick on the buttons to change scenery or talk to the characters.\n"
+            + "\nPressing the 'Enter' key during conversations is the same as clicking 'Next'.\n"
+            + "\nTalking to characters raises 'affection_lvl'.\n"
+            + "\nConversations change depending 'affection_lvl'.\n"
+            + "\nLook out for '+' conversation choices that appear! These are unique and don't always spawn. They vary depending on your location, so visit different spots frequently! Click these to add a boost to your 'affection_lvl'!\n"
+            + "\nBe sure to play multiple times as some conversations no longer appear after 'affection_lvl' exceeds a certain point.\n");
 });
 
 //Backgrounds list
@@ -16,8 +18,8 @@ generateOptions(backgrounds, $('#backgrounds'), 'backgroundOptions');
 var characters = {
     cafe: ['polarBear', 'panda', 'penguin'],
     bar: ['polarBear', 'panda', 'penguin'],
-    table: ['penguin'],
-    patio: ['panda'],
+    table: ['polarBear', 'penguin'],
+    patio: ['polarBear', 'panda'],
 };
 
 //Clears portrait
@@ -46,22 +48,25 @@ var polarBear = {
             return ["Hi there! My name is Polar Bear, welcome to my cafe!"];
         }
         else if (this.affection_lvl > 0 && this.affection_lvl < 5) {
-            return ["Welcome!"];
+            return ["Yes?",
+                "Is there something on your mind?"];
         } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
-            return ["It's good to see you again!"];
+            return ["Ah, welcome back!",
+                "It's good to see you again."];
         } else {
             return ["Hello friend!",
                 "Would you like the usual?"];
         }
     },
     cafe: function() {
-        if (this.affection_lvl > 9) {
+        if (this.affection_lvl > 15) {
             return ["It's always good to see a familiar face.",
                 "Sometimes this place doesn't have many patrons,",
                 "And it feels rather lonely.",
+                "...",
                 "Just so you know.",
                 "You will always be welcome here."];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
             return ["You've been coming more often.",
                 "I wonder if you've taken a liking to this place.",
                 "I opened this cafe as a place for customers to relax.",
@@ -80,14 +85,52 @@ var polarBear = {
                 "You'll feel sick later if you do.",
                 "Here have some more water.",
                 "Always hydrate well when drinking."];
-        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 9) {
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
             return ["Fancy a drink friend?",
                 "Or just a tonic for now?",
                 "Feel free to talk about your problems.",
                 "I'll do my best to listen."];
         } else {
             return ["It's a bit early for a drink isn't it?",
-                "I'll start you off with some water for now."];
+                "I'll start you off with some water for now.",
+                "Take your time to decide."];
+        }
+    },
+    table: function() {
+        if (this.affection_lvl > 15) {
+            return ["Being lost in thought is a wonderful thing.",
+                "After all,",
+                "Dreams are what push us forward,",
+                "And always towards a better tomorrow.",
+                "But enough about the future.",
+                "Let us enjoy the present."];
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+            return ["Just hanging out today friend?",
+                "I find myself lost in thought when I am here.",
+                "Perhaps you have much on your mind.",
+                "I'll leave you to it."];
+        } else {
+            return ["This corner is really quiet.",
+                "People usually come to this corner to think.",
+                "Or maybe you just enjoy the silence?"];
+        }
+    },
+    patio: function() {
+        if (this.affection_lvl > 15) {
+            return ["I see you also enjoy the great outdoors.",
+                "Grizzly and I often visit the mountains.",
+                "We love to discover new wild ingredients to bring back.",
+                "It lets us invent new items for our menus.",
+                "Keeping things fresh and bringing new wonders back for our customers."];
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
+            return ["The scenery out here is nice isn't it?",
+                "Being able to relax and enjoy the air.",
+                "I often come out here myself to relax after a days work.",
+                "It really is peaceful."];
+        } else {
+            return ["The patio is a nice place to sit.",
+                "You can really feel the breeze out here.",
+                "Of course I should probably clear the weeds sometime."];
         }
     },
     initialConversation1: function() {
@@ -181,7 +224,7 @@ var panda = {
                 "It makes me feel warm and fuzzy on the outside.",
                 "I also appreciate you coming to talk with me.",
                 "It makes me feel warm and fuzzy on the inside."];
-        } else if (this.affection_lvl >= 10 && this.affection_lvl <= 15) {
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
             return ["When I first came here...",
                 "This cafe didn't serve bamboo.",
                 "Can you believe that?"];
@@ -249,7 +292,7 @@ var penguin = {
                 "Because of your support,",
                 "I passed the driving exam!",
                 "I finally have a driver's liscense!"];
-        } else if (this.affection_lvl >= 10 && this.affection_lvl <= 15) {
+        } else if (this.affection_lvl >= 5 && this.affection_lvl <= 15) {
             return ["I won't give up on the driving exam!",
                 "It's like they say.",
                 "You can't succeed if you don't try!"];
