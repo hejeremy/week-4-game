@@ -12,6 +12,19 @@ var characters = {
     patio: ['polarBear', 'panda', 'penguin'],
 };
 
+//Audio import that loops
+var audio1 = new Audio('assets/audio/openForBusiness.mp3');
+audio1.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+
+var audio2 = new Audio('assets/audio/goodnightThankYou.mp3');
+audio2.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+
 //Clears portrait
 //$('#conversationWords').css('visibility', 'hidden');
 
@@ -545,15 +558,25 @@ function playAudio(inputValue) {
     switch(inputValue) {
         case 'cafe':
         case 'patio':
+            audio2.pause();
+            audio2.currentTime = 0;
+            audio1.play();
+            /*
             $('#audio2')[0].pause();
             $('#audio2')[0].currentTime = 0;
             $('#audio1')[0].play();
+            */
             break;
         case 'bar':
         case 'table':
+            audio1.pause();
+            audio1.currentTime = 0;
+            audio2.play();
+            /*
             $('#audio1')[0].pause();
             $('#audio1')[0].currentTime = 0;
             $('#audio2')[0].play();
+            */
         default:
             break;
     }
