@@ -25,6 +25,9 @@ audio2.addEventListener('ended', function() {
     this.play();
 }, false);
 
+//Conversation interval
+var conversationInterval;
+
 //Clears portrait
 //$('#conversationWords').css('visibility', 'hidden');
 
@@ -635,10 +638,13 @@ function nextButtonFunction() {
         $('#conversationWords').css('visibility', 'hidden');
         talking = false;
         showButtons();
+        resetIntervalFunction();
         refreshStats();
         $('#nextButton').empty();
     } else {
         handleConversation();
+        resetIntervalFunction();
+        setConversationInterval();
     }
 }
 
@@ -709,6 +715,7 @@ function initiateConversation(inputConversation, inputCharacter) {
     setCharacterBackground(inputCharacter);
     loadConversation(inputConversation);
     createConversation(conversationHolder);
+    setConversationInterval();
 }
 
 function setCharacterBackground(inputCharacter) {
@@ -915,4 +922,12 @@ function showButtons() {
     $('#backgrounds').css('visibility','visible');
     $('#characters').css('visibility','visible');
     $('#conversationOptions').css('visibility','visible');
+}
+
+function setConversationInterval() {
+    conversationInterval = setInterval(nextButtonFunction, 3000);
+}
+
+function resetIntervalFunction() {
+    clearInterval(conversationInterval);
 }
