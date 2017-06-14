@@ -142,6 +142,7 @@ var polarBear = {
                 "Of course I should probably clear the weeds sometime."];
         }
     },
+    /* Unfinished portion
     initialConversation1: function() {
         var speech = ['Would you like to order something?.'];
         //initiateConversation(speech);
@@ -178,7 +179,8 @@ var polarBear = {
                 return ['...'];
                 break;
         }
-    }
+    },
+    */
 };
 
 var panda = {
@@ -359,8 +361,6 @@ var penguin = {
 };
 
 //Instructions
-//$(document).ready(restart());
-
 function instructionsAlert() {
     alert('Welcome to Polar Bear Cafe!\n'
             + "\nClick on the buttons to change scenery or initiate basic conversation with the characters.\n"
@@ -397,7 +397,6 @@ function setBackground(inputValue) {
 
     var body = $('body');
     body.css('background-image', imagePath);
-    //$('body').css('background-size', '100%, auto');
     body.css('background-repeat', 'no-repeat');
 }
 
@@ -417,14 +416,12 @@ function generateOptions(inputArray, outputPlace, classOption) {
         }
         newOption.data('value', item);
         newOption.text(item.toUpperCase());
-        //console.log(newOption.data('value'));
         newOption.appendTo(outputPlace);
     }
 }
 
 //Conversation event handler
 function enterConversation(inputValue) {
-    //console.log(inputValue);
     generateConversation(inputValue);
 }
 
@@ -462,11 +459,9 @@ function generateCharacterStats(inputObj) {
     setCharacterBody.addClass('panel-body');
     for (x in inputObj) {
         var value = inputObj[x];
-        //console.log(typeof value);
         if (typeof value != 'function') {
             var characterInfo = $('<p>');
             characterInfo.text(x.toUpperCase() + ': ' + inputObj[x]);
-            //console.log(characterInfo.text);
             setCharacterBody.append(characterInfo);
         }
     }
@@ -510,7 +505,7 @@ function panelPackage(input) {
     return newPanel;
 }
 
-//Not working
+//Working
 function callPolarBear() {
     if (talking) {
         return;
@@ -523,7 +518,6 @@ function callPolarBear() {
 
     polarBear.affection++;
     checkLocationConversation();
-    //talking = false;
 }
 
 function callPanda() {
@@ -538,7 +532,6 @@ function callPanda() {
 
     panda.affection++;
     checkLocationConversation();
-    //talking = false;
 }
 
 function callPenguin() {
@@ -553,33 +546,21 @@ function callPenguin() {
 
     penguin.affection++;
     checkLocationConversation();
-    //talking = false;
 }
 
 function playAudio(inputValue) {
-    //console.log(inputValue);
     switch(inputValue) {
         case 'cafe':
         case 'patio':
             audio2.pause();
             audio2.currentTime = 0;
             audio1.play();
-            /*
-            $('#audio2')[0].pause();
-            $('#audio2')[0].currentTime = 0;
-            $('#audio1')[0].play();
-            */
             break;
         case 'bar':
         case 'table':
             audio1.pause();
             audio1.currentTime = 0;
             audio2.play();
-            /*
-            $('#audio1')[0].pause();
-            $('#audio1')[0].currentTime = 0;
-            $('#audio2')[0].play();
-            */
         default:
             break;
     }
@@ -595,7 +576,6 @@ function loadConversation(inputArray) {
     conversationHolder.dialogue = inputArray;
     conversationHolder.dialogueLength = inputArray.length;
     conversationHolder.dialoguePlace = 0;
-    //console.log(conversationHolder);
 }
 
 function createConversation(conversationHolder) {
@@ -607,8 +587,6 @@ function createConversation(conversationHolder) {
 function handleConversation() {
     var conversation = conversationHolder.dialogue[conversationHolder.dialoguePlace];
     conversationHolder.dialoguePlace++;
-    //console.log(conversationHolder.dialoguePlace);
-    //console.log(conversation);
     conversationWords.html(panelPackage(sentencePackage(conversation)));
     return conversation;
 }
@@ -654,21 +632,17 @@ $(document).keyup(function (event) {
     } else {
         return;
     }
-    //alert('The key pressed was: ' + event.key.toLowerCase());
 });
 
 function checkTalkingTo() {
     switch(talkingTo) {
         case 'polarBear':
-            //Do something
             console.log('Talking to ' + talkingTo + '.');
             break;
         case 'panda':
-            //Do something
             console.log('Talking to ' + talkingTo + '.');
             break;
         case 'penguin':
-            //Do something
             console.log('Talking to ' + talkingTo + '.');
             break;
         default:
@@ -695,19 +669,8 @@ function resetCharacterButtons() {
 
     var characterOptions = $('.characterOptions');
     characterOptions.mouseup(function() {
-        /*
-           if (talking) {
-           console.log('still running');
-           return;
-           } else {
-           talking = true;
-           hideButtons();
-           }
-           */
         var currentCharacter = $(this).data('value');
         enterConversation(currentCharacter);
-        //talking = false;
-        //refreshStats();
     });
 }
 
@@ -896,7 +859,6 @@ function setLocationConversationButton() {
         var updateCharacter = selectCharacter(buttonValue);
         startLocationConversation(buttonValue, currentLocation);
         updateCharacter['affection'] += 3;
-        //console.log('Runs and returns value: ' + $(this).attr('value'));
         $(this).remove();
     });
 }
