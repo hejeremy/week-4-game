@@ -301,7 +301,7 @@ var penguin = {
         } else if (this.affection >= 5 && this.affection <= 15) {
             return ["I wonder if I'll do better this time?",
                 "Oh well it's like they say,",
-                "you can't succeed if you don't try."];
+                "You can't succeed if you don't try."];
         } else {
             return (["Will I ever pass the driving exam?",
                     "I won't give up!"]);
