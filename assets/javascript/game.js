@@ -325,14 +325,17 @@ var penguin = {
     },
     table: function() {
         if (this.affection > 15) {
-            return ["I appreciate that you always listen to me.",
-                "Because of your support,",
-                "I passed the driving exam!",
-                "I finally have a driver's liscense!"];
+            return ["You know...",
+                "Perhaps one day I will give it a try.",
+                "Panda's bamboo talk that is.",
+                "I'll have to be careful not to cut myself on the leaves.",
+                "Just try to think of it as a salad..."];
         } else if (this.affection >= 5 && this.affection <= 15) {
-            return ["I won't give up on the driving exam!",
-                "It's like they say.",
-                "You can't succeed if you don't try!"];
+            return ["No Panda, I do not want to eat bam-",
+                "Oh, it's you.",
+                "Sorry about that.",
+                "Panda is still trying to get me to eat his bamboo.",
+                "I keep telling him penguins can't eat that stuff..."];
         } else {
             return ["I like this quiet corner",
                 "It helps me think.",
