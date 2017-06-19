@@ -276,12 +276,12 @@ var penguin = {
     startConversation: function() {
         if (this.affection === 0) {
             return (["Hello.",
-                    "I'm penguin.",
+                    "I'm Penguin.",
                     "Nice to meet you!"]);
         }
         else if (this.affection > 0 && this.affection < 5) {
             return ["Is there something you need?",
-                "Sorry.",
+                "Sorry but,",
                 "I can't really help you right now."];
         } else if (this.affection >= 5 && this.affection <= 15) {
             return (["Hey again.",
